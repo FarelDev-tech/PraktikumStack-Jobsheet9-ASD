@@ -57,11 +57,39 @@ public class StackTugasMahasiswa08 {
         }
     }
 
+    public Mahasiswa08 peekBottom() {
+        if (!isEmpty()) {
+            return stack[0];
+        } else {
+            System.out.println("Stack Kosong!, Tidak ada tugas yang dikumpulkan");
+            return null;
+        }
+    }
+
+    public int countTugas() {
+        return top + 1;
+    }
+
     public void print() {
-        for (int i = 0; i <= top; i++) {
+        for (int i = top; i >= 0; i--) {
             System.out.println(stack[i].nama + "\t" + stack[i].nim + "\t" + stack[i].kelas);
         }
 
         System.out.println("");
+    }
+
+    // Percobaan 2 Konversi Biner
+    public String konversiDesimalKeBiner(int nilai) {
+        StackKonversi stack = new StackKonversi();
+        while (nilai > 0) {
+            int sisa = nilai % 2;
+            stack.push(sisa);
+            nilai = nilai / 2;
+        }
+        String biner = new String();
+        while (!stack.isEmpty()) {
+            biner += stack.pop();
+        }
+        return biner;
     }
 }
